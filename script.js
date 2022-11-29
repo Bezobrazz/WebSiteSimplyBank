@@ -39,3 +39,13 @@ const section1 = document.querySelector('#section--1');
 btnScrollTo.addEventListener('click', () => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+// Smooth scroll to nav links
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  // choos ul class ('.nav__links')
+  e.preventDefault(); // to stop defoult scroll
+  if (e.target.classList.contains('nav__link')) {
+    const href = e.target.getAttribute('href');
+    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+  }
+});
