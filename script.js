@@ -70,3 +70,40 @@ tabContainer.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${clickedButton.dataset.tab}`) // HTML must contain data attribute
     .classList.add('operations__content--active');
 });
+
+// Fade for navigation
+const nav = document.querySelector('.nav');
+
+const navLinksHoverAnimation = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const linkOver = e.target;
+    const siblingLinks = linkOver
+      .closest('.nav__links')
+      .querySelectorAll('.nav__link');
+    const logo = linkOver.closest('.nav').querySelector('img');
+    const logoText = linkOver.closest('.nav').querySelector('.nav__text');
+
+    siblingLinks.forEach(el => {
+      if (el !== linkOver) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+    logoText.style.opacity = this;
+  }
+};
+// Работа с аргументами при помощи bind() / this
+nav.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
+
+nav.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
+
+// Sticky navigation
+const section1Coord = section1.getBoundingClientRect();
+console.log(section1Coord);
+
+window.addEventListener('scroll', function () {
+  console.log(window.scrollY);
+  if (this.window.scrollY > section1Coord.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
