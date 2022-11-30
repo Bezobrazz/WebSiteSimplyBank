@@ -96,14 +96,45 @@ nav.addEventListener('mouseover', navLinksHoverAnimation.bind(0.4));
 nav.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
 
 // Sticky navigation
-const section1Coord = section1.getBoundingClientRect();
-console.log(section1Coord);
+// const section1Coord = section1.getBoundingClientRect();
 
-window.addEventListener('scroll', function () {
-  console.log(window.scrollY);
-  if (this.window.scrollY > section1Coord.top) {
+// window.addEventListener('scroll', function () {
+//   if (this.window.scrollY > section1Coord.top) {
+//     nav.classList.add('sticky');
+//   } else {
+//     nav.classList.remove('sticky');
+//   }
+// });
+
+// Stycky navigation intersection observer
+// const observerCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
+
+// const observerOptions = {
+//   root: null,
+//   threshold: 0.1,
+// };
+
+// const observer = new IntersectionObserver();
+// observerCallback, observerOptions;
+// observer.observ(section1);
+
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height; // значення висоти нав бару
+const getStickyNav = function (entries) {
+  const entry = entries[0];
+  if (!entry.isIntersecting) {
     nav.classList.add('sticky');
   } else {
     nav.classList.remove('sticky');
   }
+};
+const observer = new IntersectionObserver(getStickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`, // ("-100px" або шаблонну строку) якщо потрібен відступ до границі
 });
+observer.observe(header);
