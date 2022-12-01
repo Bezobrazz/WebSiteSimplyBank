@@ -12,6 +12,8 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>Просто Банк | Когда Банк Максимально Понятен</title>
+
+    <script defer src="script.js"></script>
   </head>
   <body>
     <header class="header">
@@ -21,7 +23,10 @@
           alt="Лого Просто Банк"
           class="nav__logo"
           id="logo"
+          developer="YouRa Allakhverdov"
+          data-version-number="2.0"
         />
+        <!-- <div class="nav__text" onclick="alert('HTML onclick')">Просто Банк</div> -->
         <div class="nav__text">Просто Банк</div>
         <ul class="nav__links">
           <li class="nav__item">
@@ -133,7 +138,6 @@
       </div>
     </section>
 
-    <!--  Tabs -->
     <section class="section" id="section--2">
       <div class="section__title">
         <h2 class="section__description">Операции</h2>
@@ -143,20 +147,30 @@
       <div class="operations">
         <div class="operations__tab-container">
           <button
-            class="btn operations__tab operations__tab--1 operations__tab--active"
+            class="
+              btn
+              operations__tab operations__tab--1 operations__tab--active
+            "
             data-tab="1"
           >
+            <span>🚀</span>
             Мгновенные переводы
           </button>
           <button class="btn operations__tab operations__tab--2" data-tab="2">
+            <span>🚀</span>
             Мгновенные Займы
           </button>
           <button class="btn operations__tab operations__tab--3" data-tab="3">
+            <span>🚀</span>
             Мгновенное Закрытие
           </button>
         </div>
         <div
-          class="operations__content operations__content--1 operations__content--active"
+          class="
+            operations__content
+            operations__content--1
+            operations__content--active
+          "
         >
           <div class="operations__icon operations__icon--1">
             <svg>
@@ -372,6 +386,6 @@
     </div>
     <div class="overlay hidden"></div>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>
